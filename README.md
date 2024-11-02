@@ -2,7 +2,7 @@
 
 Este repositório contém uma listagem de usuários (gerada com fakerjs) representada em uma tabela.
 
-[Tela do dashboard](./example.png)
+![Tela do dashboard](./example.png)
 
 Você pode pesquisar, limitar, ou criar outros usuários.
 
