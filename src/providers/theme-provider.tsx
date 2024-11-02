@@ -22,13 +22,22 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         "(prefers-color-scheme: light)",
     ).matches
 
-    const defaultTheme: Theme = prefersLightTheme ? "light" : "dark"
+    // theme saved in localStorage
+    const savedTheme = localStorage.getItem("theme") as Theme
+
+    // preferred user device theme
+    const preferredSchema = prefersLightTheme ? "light" : "dark"
+
+    // if savedTheme is null, use the preferred schema
+    const defaultTheme: Theme = savedTheme ?? preferredSchema
+
     const [theme, setTheme] = useState<Theme>(defaultTheme)
 
     useEffect(() => {
         const root = document.documentElement
         root.className = ""
         root.classList.add(theme)
+        localStorage.setItem("theme", theme)
     }, [theme])
 
     return (
